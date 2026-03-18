@@ -477,7 +477,8 @@ p.pokemon-tagline {
   }
 
   .type-pills {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
   }
 
   .sort-spacer {
@@ -494,25 +495,56 @@ p.pokemon-tagline {
 
   .modal {
     flex-direction: column;
-    max-height: 85vh;
-    overflow-y: auto;
-    border-radius: 16px;
-    width: 92vw;
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
+    animation: none;
   }
 
   .modal-left {
-    width: 100%;
-    border-radius: 16px 16px 0 0;
-    padding: 20px;
+    width: 100% !important;
+    flex-shrink: 0;
+    border-radius: 0;
+    padding: 12px 0;
   }
 
   .modal-sprite {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
   }
 
   .modal-right {
-    padding: 16px;
+    flex-shrink: 0;
+    padding: 10px 16px 12px;
+  }
+
+  .modal-name {
+    font-size: 26px;
+    margin: 0 0 4px;
+  }
+
+  .modal-flavor {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0 0 6px;
+  }
+
+  .modal-meta {
+    margin-bottom: 6px;
+  }
+
+  .modal-abilities {
+    margin-bottom: 6px;
+  }
+
+  .modal-stat-row {
+    margin: 1px 0;
   }
 
   .modal-stat-label {

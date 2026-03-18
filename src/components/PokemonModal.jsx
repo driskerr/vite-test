@@ -28,10 +28,21 @@ export default function PokemonModal({ pokemon, onClose }) {
   }, [onClose]);
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  useEffect(() => {
     setDetails(null);
     Promise.all([
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`).then((r) => r.json()),
-      fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`).then((r) => r.json()),
+      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`).then((r) =>
+        r.json(),
+      ),
+      fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`).then(
+        (r) => r.json(),
+      ),
     ]).then(([poke, species]) => setDetails({ poke, species }));
   }, [pokemon.id]);
 
@@ -44,11 +55,15 @@ export default function PokemonModal({ pokemon, onClose }) {
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕</button>
+        <button className="modal-close" onClick={onClose}>
+          ✕
+        </button>
 
         <div
           className="modal-left"
-          style={{ background: `linear-gradient(to bottom, ${color}90, ${color}22)` }}
+          style={{
+            background: `linear-gradient(to bottom, ${color}90, ${color}22)`,
+          }}
         >
           <img className="modal-sprite" src={spriteUrl} alt={pokemon.name} />
         </div>
@@ -65,22 +80,32 @@ export default function PokemonModal({ pokemon, onClose }) {
 
           {details && (
             <>
-              {flavorText && (
-                <p className="modal-flavor">"{flavorText}"</p>
-              )}
+              {flavorText && <p className="modal-flavor">"{flavorText}"</p>}
 
               <div className="modal-meta">
-                <span><strong style={{ color: textColor }}>{Math.floor(details.poke.height * 3.93701 / 12)} ft {Math.round(details.poke.height * 3.93701 % 12)} in</strong> height</span>
-                <span><strong style={{ color: textColor }}>{Math.round(details.poke.weight * 0.220462 / 5) * 5} lb</strong> weight</span>
+                <span>
+                  <strong style={{ color: textColor }}>
+                    {Math.floor((details.poke.height * 3.93701) / 12)} ft{" "}
+                    {Math.round((details.poke.height * 3.93701) % 12)} in
+                  </strong>{" "}
+                  height
+                </span>
+                <span>
+                  <strong style={{ color: textColor }}>
+                    {Math.round((details.poke.weight * 0.220462) / 5) * 5} lb
+                  </strong>{" "}
+                  weight
+                </span>
               </div>
 
               <div className="modal-abilities">
                 <strong style={{ color: textColor }}>
-                  {details.poke.abilities.map((a) => toTitleCase(a.ability.name)).join(", ")}
+                  {details.poke.abilities
+                    .map((a) => toTitleCase(a.ability.name))
+                    .join(", ")}
                 </strong>
               </div>
 
-              <p className="filter-label" style={{ margin: "0 0 6px" }}>Base Stats</p>
               {details.poke.stats.map((s) => (
                 <div key={s.stat.name} className="modal-stat-row">
                   <span className="modal-stat-label">
@@ -89,10 +114,16 @@ export default function PokemonModal({ pokemon, onClose }) {
                   <div className="modal-stat-track">
                     <div
                       className="modal-stat-fill"
-                      style={{ width: `${(s.base_stat / 160) * 100}%`, background: color }}
+                      style={{
+                        width: `${(s.base_stat / 160) * 100}%`,
+                        background: color,
+                      }}
                     />
                   </div>
-                  <span className="modal-stat-value" style={{ color: textColor }}>
+                  <span
+                    className="modal-stat-value"
+                    style={{ color: textColor }}
+                  >
                     {s.base_stat}
                   </span>
                 </div>
