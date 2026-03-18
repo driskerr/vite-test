@@ -13,7 +13,7 @@ function App() {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [hpRange, setHpRange] = useState([0, maxHp]);
   const [attackRange, setAttackRange] = useState([0, maxAttack]);
-  const [sortBy, setSortBy] = useState("hp");
+  const [sortBy, setSortBy] = useState("popularity");
   const [search, setSearch] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const closeModal = useCallback(() => setSelectedPokemon(null), []);
