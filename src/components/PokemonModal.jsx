@@ -89,7 +89,7 @@ export default function PokemonModal({ pokemon, onClose }) {
                   <div className="modal-stat-track">
                     <div
                       className="modal-stat-fill"
-                      style={{ width: `${(s.base_stat / 255) * 100}%`, background: color }}
+                      style={{ width: `${(s.base_stat / 160) * 100}%`, background: color }}
                     />
                   </div>
                   <span className="modal-stat-value" style={{ color: textColor }}>

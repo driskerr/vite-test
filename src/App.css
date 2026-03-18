@@ -370,6 +370,42 @@ p.pokemon-tagline {
   /* color set dynamically */
 }
 
+/* ── Stat bar ─────────────────────────────────────────── */
+
+.stat-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.stat-bar-emoji {
+  font-size: 13px;
+  width: 18px;
+}
+
+.stat-bar-track {
+  flex: 1;
+  background: #e8e8e8;
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  /* width and background set dynamically */
+}
+
+.stat-bar-value {
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 24px;
+  text-align: right;
+  /* color set dynamically */
+}
+
 /* ── No results ───────────────────────────────────────── */
 
 .no-results {
@@ -401,6 +437,86 @@ p.pokemon-tagline {
   color: #2A75BB;
   cursor: pointer;
   text-decoration: underline;
+}
+
+/* ── Mobile ───────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  #root {
+    padding: 24px 16px 40px;
+  }
+
+  h1.pokemon-title {
+    font-size: 52px;
+    -webkit-text-stroke: 2px #2A75BB;
+    text-shadow: 3px 3px 0px #2A75BB;
+  }
+
+  p.pokemon-tagline {
+    font-size: 18px;
+  }
+
+  .filter-panel {
+    padding: 16px;
+  }
+
+  .filter-columns {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .filter-col {
+    padding: 0 !important;
+  }
+
+  .filter-col:first-child {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px !important;
+  }
+
+  .type-pills {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .sort-spacer {
+    display: none;
+  }
+
+  .cards-hint {
+    display: none;
+  }
+
+  .cards-header {
+    margin: 6px 0 16px;
+  }
+
+  .modal {
+    flex-direction: column;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    width: 92vw;
+  }
+
+  .modal-left {
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+  }
+
+  .modal-sprite {
+    width: 120px;
+    height: 120px;
+  }
+
+  .modal-right {
+    padding: 16px;
+  }
+
+  .modal-stat-label {
+    min-width: 80px;
+  }
 }
 
 /* ── Modal ────────────────────────────────────────────── */
@@ -558,3 +674,4 @@ p.pokemon-tagline {
   text-align: right;
   /* color set dynamically */
 }
+

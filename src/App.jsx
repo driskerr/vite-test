@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import "./App.css";
 import { pokemons, typeData } from "./data/pokemon";
 import PokemonCard from "./components/PokemonCard";
@@ -16,6 +16,7 @@ function App() {
   const [sortBy, setSortBy] = useState("hp");
   const [search, setSearch] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const closeModal = useCallback(() => setSelectedPokemon(null), []);
 
   function toggleType(type) {
     setSelectedTypes((prev) =>
@@ -170,7 +171,7 @@ function App() {
       {selectedPokemon && (
         <PokemonModal
           pokemon={selectedPokemon}
-          onClose={() => setSelectedPokemon(null)}
+          onClose={closeModal}
         />
       )}
     </>
