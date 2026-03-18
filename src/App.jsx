@@ -99,7 +99,7 @@ function App() {
               <RangeSlider
                 label="Attack"
                 min={0}
-                max={maxAttack}
+                max={160}
                 value={attackRange}
                 onChange={setAttackRange}
                 color="#8B0000"
