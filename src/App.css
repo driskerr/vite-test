@@ -302,37 +302,38 @@ p.pokemon-tagline {
   width: 165px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.18s, box-shadow 0.18s;
   position: relative;
-  overflow: hidden;
   /* border, background, box-shadow set dynamically */
 }
 
 .pokemon-card:hover {
-  transform: translateY(-6px);
+  animation: card-pulse 0.5s ease forwards;
 }
 
-.pokemon-card::after {
-  content: '';
+@keyframes card-pulse {
+  0%   { transform: translateY(0) scale(1); }
+  40%  { transform: translateY(-9px) scale(1.05); }
+  70%  { transform: translateY(-5px) scale(1.02); }
+  100% { transform: translateY(-6px) scale(1.03); }
+}
+
+.card-tooltip {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-15deg);
-  transition: left 0.5s ease;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  opacity: 0.75;
+  white-space: nowrap;
+  animation: tooltip-fade-in 0.2s ease;
   pointer-events: none;
 }
 
-.pokemon-card:hover::after {
-  left: 160%;
+@keyframes tooltip-fade-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to   { opacity: 0.75; transform: translateX(-50%) translateY(0); }
 }
+
 
 .pokemon-card img {
   width: 120px;
