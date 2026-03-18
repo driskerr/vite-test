@@ -2,7 +2,7 @@ import { useState } from "react";
 import StatBar from "./StatBar";
 import { typeData } from "../data/pokemon";
 
-export default function PokemonCard({ pokemon, maxHp, maxAttack, onClick }) {
+export default function PokemonCard({ pokemon, maxHp, onClick }) {
   const { color, textColor, emoji } = typeData[pokemon.type];
   const [hovered, setHovered] = useState(false);
 
@@ -35,7 +35,7 @@ export default function PokemonCard({ pokemon, maxHp, maxAttack, onClick }) {
         {pokemon.name}
       </h3>
       <StatBar value={pokemon.hp} max={maxHp} color="#228B22" emoji="❤️" />
-      <StatBar value={pokemon.attack} max={maxAttack} color="#8B0000" emoji="⚔️" />
+      <StatBar value={pokemon.attack} max={160} color="#8B0000" emoji="⚔️" />
       {hovered && <div className="card-tooltip">Click for details</div>}
     </div>
   );
