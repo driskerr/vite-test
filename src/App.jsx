@@ -12,7 +12,7 @@ const maxAttack = Math.max(...pokemons.map((p) => p.attack));
 function App() {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [hpRange, setHpRange] = useState([0, maxHp]);
-  const [attackRange, setAttackRange] = useState([0, maxAttack]);
+  const [attackRange, setAttackRange] = useState([0, 160]);
   const [sortBy, setSortBy] = useState("popularity");
   const [search, setSearch] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -27,7 +27,7 @@ function App() {
   function resetFilters() {
     setSelectedTypes([]);
     setHpRange([0, maxHp]);
-    setAttackRange([0, maxAttack]);
+    setAttackRange([0, 160]);
     setSearch("");
   }
 
